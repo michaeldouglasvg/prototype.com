@@ -1,0 +1,864 @@
+$colors:(
+    header:white, home: blue, uppercard: purple, card: pink,
+    container: rgb(27, 25, 25), aside: blue, footer: black
+);
+
+// $mobile: 375px;
+
+// @mixin mobile {
+//     @media (min-width: #{$mobile}) {
+//       @content;
+//     }
+// }
+
+$tablets: 720px;
+
+@mixin tablets {
+    @media (min-width: #{$tablets}) {
+      @content;
+    }
+}
+
+$desktop: 1100px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+      @content;
+    }
+}
+*{
+    // box-sizing: border-box;
+    ul li{
+        list-style: none;
+    }
+}
+body{
+    margin: 0;
+    padding: 0;
+    p{
+        padding:10px;
+    }
+
+    .header{
+        margin: 20px auto;
+        // width: 100%;
+        height: 310px;
+        position: relative;
+        .logo{
+            font-weight: 400;
+            margin: 5px auto;
+            padding: 10px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            &:hover{
+                color: green;
+            }
+        }
+
+        .header-body{
+            .toggle-bar{
+                position: relative;
+                @include tablets{
+                }
+                @include desktop{
+                    display: none;
+                }
+                .icon{
+                    position: fixed;
+                    right: 30px;
+                    top: 25px;
+                    font-size: 1.8rem;
+                }
+            }
+
+            #list{
+                position: absolute;
+                top: 40px;
+                left: 20%;
+                @include desktop{
+                    position: absolute;
+                    top: -10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 20px 50px;
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                    cursor: pointer;
+                }
+                li a, li i{
+                    margin-top: 20px;
+                    cursor: pointer;
+                    @include desktop{
+                        display: none;
+                    }
+                }
+            }
+        }
+
+        .socio-icons{
+            position: absolute;
+            top: 300px;
+            left: 50px;
+            @include desktop{
+                position: absolute;
+                top: 10px;
+                left: 88%; 
+            }
+            a, i{
+                margin-left: 10px;
+                font-size: 1.5rem;
+                color: black;
+                &:hover{
+                    color: orangered;
+                }
+                @include desktop{
+                    margin-left: 1px; 
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+
+    .main{
+        // position: relative;
+        margin: 0px;
+        background:orangered;
+        position: absolute;
+        top: 60px;
+        max-width: 375px;
+        width: fit-content;
+        // animation: showmenu 3s ease forwards;
+        // animation required
+        .home-section{
+            clip-path: polygon(40% 0%, 100% 0, 100% 44%, 56% 99%, 21% 64%, 0 100%, 0 0);
+            background:blue;
+            height: 100vh;
+            margin: 0px;
+            @include tablets {
+                margin: 0px;
+            }
+            @include desktops{
+                height: 100vh;
+            }
+            .heading-home{
+                text-align: center;
+                margin-top:0px;
+                h2{
+                    padding-top: 150px;
+                    @include desktop{
+                        padding-top: 200px;
+                    }
+                }
+
+            }
+            .home-middle p{
+                text-align: center;
+                line-height: 1.5rem;
+                font-size: 40px;
+                line-height: 3rem;
+                font-weight: 900;
+                @include desktop{
+                    margin-top: 20px;
+                }
+            }
+            .home-button button{
+                margin: 10px auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: blue;
+                padding: 10px 15px;
+                cursor: pointer;
+                border-radius: 15px;
+                -webkit-border-radius: 15px;
+                -moz-border-radius: 15px;
+                -ms-border-radius: 15px;
+                -o-border-radius: 15px;
+            }
+        }
+        // section after home css
+        .section-after-home{
+            background: orangered;
+            margin: auto 5px;
+            @include desktop{
+                margin: auto 5px;
+            }
+            .wrapper-after-home{
+                background:blue;
+                margin: auto;
+                // the over flow of the cards that needs js for circulating through them
+                height: 550px;
+                overflow: hidden;
+                z-index: -1;
+                @include tablets {
+                    margin: 0px;
+                }
+                // end off cards overflow
+                .all-navigation{
+                    position: relative;
+                    top: 10px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    cursor: pointer;
+                    .owl-nav-prev{
+                        margin: 10px;
+                        font-size: 1.5rem;
+                        cursor: pointer;
+                        @include tablets{
+                            margin-right: 80px;
+                        }
+                    }
+                    .owl-nav-next{
+                        margin: 10px;
+                        font-size: 1.5rem;
+                        @include tablets{
+                            margin-left: 80px;
+                        }
+                    }
+                }
+                .wrapper-display-grid{
+                    margin: 0 20px;
+                    display: grid;
+                    grid-template-columns: repeat(auto, auto);
+                    overflow: hidden;
+                    @include tablets{
+                        display: grid;
+                        grid-template-columns: repeat(2, auto);
+                        grid-gap:1px;
+                        margin: 0px 70px;
+                    }
+                    @include desktop{
+                        display: grid;
+                        grid-template-columns: repeat(3, auto);
+                        grid-gap:1px;
+                        margin: 0px 100px;
+                    }
+                    .card-wrapper-outer{
+                        overflow: hidden;
+                        position: relative;
+                        margin:30px;
+                        background: orange;
+                        height: 450px;
+                        box-sizing: border-box;
+                        box-shadow: 5px 5px rgb(143, 141, 141);
+
+                        img{
+                            height: 250px;
+                            width: 100%;
+                            margin: 0px;
+                            cursor: pointer;
+                        }
+                        .card-content{
+                            padding: auto 5px;
+                            h4{
+                                text-align: center;
+                                padding: auto 5px;
+                            }
+                            button{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                margin: 0 auto;
+                                cursor: pointer;
+                                padding: 10px 15px;
+                                border-radius: 15px;
+                                -webkit-border-radius: 15px;
+                                -moz-border-radius: 15px;
+                                -ms-border-radius: 15px;
+                                -o-border-radius: 15px;
+                            }
+                            span{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                margin: 0 auto;
+                                padding-top: 30px;
+                            }
+                        }
+                    }
+    
+                }
+            }
+        }
+        // anoter section of the body the main container
+
+        .section-body-content{
+            margin: 0px;
+            background: white;
+            .wrapper-body-content{
+                margin: 5px;
+                background: white;
+
+                @include tablets{
+                    display: grid;
+                    grid-template-columns: auto 40%;
+                    margin: 5px;
+                }
+                @include desktop{
+                    margin: 50px;
+                }
+                
+                // left section
+                .wrapper-left-body-content{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(6, 1fr));
+                    margin: 10px;
+                    margin-top: 80px;
+                    height: auto;
+                    @include desktop{
+                        margin-top: 25px;
+                    }
+                    // card of the container
+                    .container-card1{
+                        margin: 10px;
+                        border-bottom: 1px solid black;
+                        @include tablets{
+                            margin-top: 40px;
+                        }
+                        
+                        .card1-image-container-decription img{
+                            width: 100%;
+                            object-fit: scale-down;
+                            z-index: -1;
+                            cursor: pointer;
+                        }
+
+                        .image-decsription-lower{
+                            cursor: pointer;
+                                background-color: black;
+                                padding: 10px;
+                                width: fit-content;
+                                margin-top: -40px;
+                                margin-left: 2px;
+                                color: white;
+                                border-radius: 15px;
+                                -webkit-border-radius: 15px;
+                                -moz-border-radius: 15px;
+                                -ms-border-radius: 15px;
+                                -o-border-radius: 15px;
+                            @include tablets{
+                                background-color: black;
+                                padding: 10px;
+                                width: fit-content;
+                                margin-top: -40px;
+                                margin-left: 30px;
+                                color: white;
+                                border-radius: 15px;
+                                -webkit-border-radius: 15px;
+                                -moz-border-radius: 15px;
+                                -ms-border-radius: 15px;
+                                -o-border-radius: 15px;
+                            }
+                            @include desktop{
+                                 display: flex;
+                                 justify-content: center;
+                                 align-items: center;
+                            }
+                        }
+
+                        .card-content-at-lower-image{
+                            margin: 10px;
+                            a{ 
+                                padding: 2px 10px;
+                                font-size: 20px;
+                                text-decoration: none;
+
+                                @include tablets{
+                                    font-size: 1.2rem;
+                                }
+                                @include desktop{
+                                    font-size: 1rem;
+                                }
+                            }
+                            p{
+                                text-align: center;
+                                line-height: 1.2rem;
+                                padding-left: 2px;
+                                font-size: 20px;
+
+                                @include tablets{
+                                    margin: 0px;
+                                }
+                                @include desktop{
+                                     line-height: 1.3rem;
+                                }
+                             }
+                            button{
+                                padding: 10px 20px;
+                                margin-left:20px;
+                                margin-bottom: 20px;
+                                background: blue;
+                                cursor: pointer;
+
+                                @include tablets{
+                                    padding-left: 3px;
+                                    border-radius: 15px;
+                                    -webkit-border-radius: 15px;
+                                    -moz-border-radius: 15px;
+                                    -ms-border-radius: 15px;
+                                    -o-border-radius: 15px;
+                                }
+                            }
+                        }
+                    }
+                    .navigate{
+                        margin:0 auto;
+                        a{
+                            padding: 5px;
+                            text-decoration: none;
+                        }
+                        a i{
+                            color: black;
+                        }
+                    }
+                }
+
+                // asside container
+                .wrapper-right-container{
+                    margin: 30px;
+                    .container-cartegory{
+                        h1{
+                            font-weight: 800;
+                        }
+                        margin: 10px;
+                        @include tablets{
+                            margin-top: 80px;
+                        }
+                        @include desktop{
+                            margin-top: 25px;
+                        }
+                        .cartegory-list-class{
+                            margin: 10px;
+                            li{
+                                width: 70%;
+                                background: white;
+                                border: 1px solid black;
+                                padding: 5px;
+                                margin: 5px;
+                                border-radius: 15px;
+                                cursor: pointer;
+                                
+                                a{
+                                    text-decoration: none;
+                                    color: black;
+                                    font-size: 20px;
+                                    cursor: pointer;
+                                }
+                                span{
+                                  margin-left: 10px; 
+                                  cursor: pointer; 
+                                }
+                            }
+                        }
+                    }
+
+                    .wrapper-lower-divs{
+                        .title{
+                            color: black;
+                            cursor: pointer;
+                            @include tablets{
+                                margin-top: 40px;
+                            }
+                        }
+                        .container-card-content {
+                            margin: 3px;
+                            // width: 100%;
+                            object-fit: scale-down;
+                            .image-post-left{
+                                width: inherit;
+                                img{
+                                    height: auto;
+                                    width: inherit;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    margin: 0 auto;
+                                    cursor: pointer;
+                                    @include tablets{
+                                        margin-top: 70px;
+                                    }
+                                    @include desktop{
+                                        z-index: -1;
+                                        margin-top: 20px;
+                                    }
+                                }
+                            }
+                            .post-information-cards{
+                                cursor: pointer;
+                                display: none;
+
+                                @include tablets{
+                                    display: block;
+                                }
+                                @include desktop{
+                                    z-index: 1;
+                                    margin-top: -30px;
+                                    display: block;
+                                    background:black;
+                                    margin-left: 10px;
+                                    padding: 10px;
+                                    width: fit-content;
+                                    color: white;
+                                    border-radius: 15px;
+                                    cursor: pointer;
+                                    -webkit-border-radius: 15px;
+                                    -moz-border-radius: 15px;
+                                    -ms-border-radius: 15px;
+                                    -o-border-radius: 15px;
+                                }
+                            }
+                            .post-title-content{
+                                a{ 
+                                display: flex;
+                                text-decoration: none;
+                                color: black;
+                                font-size: 1.2rem;
+                                font-weight: 800;
+                                justify-content: center;
+                                align-items: center;
+                                margin:20px;
+                                width: inherit;
+                                object-fit: scale-down;
+                                cursor: pointer;
+                                @include tablets{
+                                    margin: 20px auto;
+                                }
+                                }
+                            }
+                        }
+                    }
+
+                    // newlatter
+                    .news-left-content{
+                        margin: 20px;
+                        @include tablets{
+                            margin-top: 50px;
+                        }
+                        @include desktop{
+                            margin-top: 25px;
+                        }
+                        h2{
+                            font-weight: 800;
+                        }
+                        .form-input-container{
+                            input{
+                                padding: 10px;
+                                // width: 70%;
+                                @include tablets{
+                                    padding: 5px;
+                                    // width: 100%;
+                                }
+                            }
+                            .button{
+                                padding: 10px;
+                                background: green;
+                                cursor: pointer;
+                                @include tablets{
+                                    padding: 5px;
+                                    width:90px;
+                                    margin-top: 10px;
+                                }
+                            }
+                        }
+                    }
+
+                    .popular-tags-used{
+                        margin: 20px;
+                        @include tablets{
+                            margin-top: 80px;
+                        }
+
+                        .flex-left-tags{
+                            margin-bottom: 90px;
+                            width: 80%;
+                            span{
+                                display: inline-block;
+                                margin: 3px;
+                                border: 1px solid white;
+                                padding: 10px;
+                                cursor: pointer;
+                                background: rgb(132, 132, 238);
+                                border-radius: 15px;
+                                -webkit-border-radius: 15px;
+                                -moz-border-radius: 15px;
+                                -ms-border-radius: 15px;
+                                -o-border-radius: 15px;
+                            }
+                        }
+                    }
+                }
+                // end of aside div
+            }
+        }
+        
+        // footer section
+        .wrapper-footer-section{
+            background: rgb(70, 68, 68);
+            color: white;
+            .outer-wrapper{
+                display:flex;
+                a{
+                    margin: 10px auto;
+                    text-decoration: none;
+                    color: white;
+                    cursor: pointer;
+                }
+            }
+            .main-container{ 
+                .inner-container{
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+                    grid-gap:20px;
+                    @include tablets{
+                        display: grid;
+                        grid-template-columns: auto auto auto;
+                    }
+                    .container-one{
+                        margin: 0px 30px 0;
+                        border-radius: 0 10px 0 10px;
+                        
+                        .production-filter{
+                            // background: green;
+                            border-bottom: 1px solid white;
+                            @include tablets{
+                                display: none;
+                            }
+                            @include desktop{
+                                display: block;
+                                border-bottom: none;
+                            }
+                            .title{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-top: 5px;
+                            }
+                            p{
+                                text-align: center;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                line-height: 1rem;
+                                cursor: pointer;
+                            }
+                            .images-grid{ 
+                                display: grid;
+                                
+                                border: 1px solid black;
+                                img{
+                                    border: 1px solid black;
+                                    display: grid;
+                                    cursor: pointer;
+                                    // grid-template-rows: repeat(10, 100px);
+                                }
+                            }
+                        }
+                    }
+                    .container-two{
+                        margin: 0px 30px 0;
+                        border-radius: 0 10px 0 10px;
+                        .helpsite-side{
+                            border-bottom: 1px solid white;
+                            @include tablets{
+                                border-bottom: none;
+                            }
+                            .title{
+                                display: flex;
+                                justify-content: center;
+                                padding-top: 3px;
+                             }
+                            p{ 
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-top: 5px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                    .container-three{
+                        margin:0px 30px 0px;
+                        border-radius: 0 10px 0 10px;
+                        .E-news{
+                            .title{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-top: 1px;
+                            }
+                            p{ 
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-top: 2px;
+                                cursor: pointer;
+                             }
+                            form{
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    padding-top: 20px;
+                                input{
+                                    padding: 10px;
+                                    // width: 50%;
+                                    @include tablets{
+                                        // width: 100%;
+                                    }
+                                    @include desktop{
+                                        // width: 100%;
+                                    }
+                                 }
+                                button{
+                                    padding: 10px;
+                                    background: rgb(108, 204, 108);
+                                    cursor: pointer;
+                                    @include tablets{
+                                        width: 100px;
+                                        padding: 10px;
+                                    }
+                                    @include desktop{
+                                        width: 100px;
+                                        padding: 10px;
+
+                                    }
+                                 }
+                            }
+                            .conections-platforms{
+                                .title{ 
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    padding-top: 10px;
+                                    margin-bottom: 20px;
+                                }
+                                a,i{
+                                    padding-left: 5px;
+                                    text-align: center;
+                                    margin-bottom: 5px;
+                                    color: white;
+                                    cursor: pointer;
+                                    @include desktop{
+                                        color: white;
+                                    }
+                                 }
+                            }
+                        }
+                    }
+                }
+                // outer lower container
+                .outer-lower{ 
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
+                    grid-gap:50px;
+                    @include tablets{
+                        display: grid;
+                        grid-template-columns: auto auto auto;
+                        grid-gap:10px;
+                    }
+                    .container-left{
+                        border: 1px solid white;
+                        margin: 0px 30px 0px;
+                        border-radius:10px 0 10px 0;
+                        .title{ 
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding-top: 5px;
+                        }
+                        a, i{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding-top: 5px;
+                            text-decoration: none;
+                            margin-bottom: 5px;
+                            color: white;
+                            cursor: pointer;
+                            @include desktop{
+                                color: white;
+                            }
+                            i{
+                                color: white;
+                            }
+                        }
+                    }
+                    .container-middle-lower{ 
+                        border: 1px solid white;
+                        margin:0px 30px 0px;
+                        border-radius:10px 0 10px 0;
+                        .title{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding-top: 5px;
+                         }
+                        a, i{ 
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding-top: 5px;
+                            text-decoration: none;
+                            margin-bottom: 5px;
+                            color: white;
+                            cursor: pointer;
+                            @include desktop{
+                                color: white;
+                            }
+                            i{
+                                color: white;
+                            }
+                        }
+                    }
+                    .container-right{
+                        border: 1px solid white;
+                        margin:0px 30px 0px;
+                        border-radius:10px 0 10px 0;
+                        .title{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding-top: 5px;
+                         }
+                        a, i{ 
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            padding-top: 10px;
+                            text-decoration: none;
+                            margin-bottom: 5px;
+                            color: white;
+                            cursor: pointer;
+                            @include desktop{
+                                color: white;
+                            }
+                            i{
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+            p{
+                text-align: center;
+                margin-bottom: 1px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+//animation to show you the humberger menu function, do something on js to toggle the menu
+// main{
+//     animation: showmenu 3s ease forwards;
+// }
+// @keyframes showmenu{
+//     from{
+//         position: absolute;
+//         top: 370px;
+//     }
+//     to{
+//         position: absolute;
+//         top: 60px;
+//     }
+// }
