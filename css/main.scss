@@ -27,12 +27,14 @@ $desktop: 1100px;
     }
 }
 *{
+    overflow-x: hidden;
     // box-sizing: border-box;
     ul li{
         list-style: none;
     }
 }
 body{
+    overflow-x: hidden;
     margin: 0;
     padding: 0;
     p{
@@ -41,40 +43,38 @@ body{
 
     .header{
         margin: 20px auto;
-        // width: 100%;
+        width: 100%;
         height: 310px;
         position: relative;
         .logo{
             font-weight: 400;
-            margin: 5px auto;
-            padding: 10px;
-            font-size: 1.5rem;
+            width:10px;
+            margin: 2px;
+            font-size: 1.3rem;
             cursor: pointer;
             &:hover{
                 color: green;
             }
         }
+        .toggle-bar{
+            position: absolute;
+            top: 10px;
+            left: 100px;
+            @include tablets{
+            }
+            @include desktop{
+                display: none;
+            }
+            .icon{
+                padding: 10px;
+            }
+        }
 
         .header-body{
-            .toggle-bar{
-                position: relative;
-                @include tablets{
-                }
-                @include desktop{
-                    display: none;
-                }
-                .icon{
-                    position: fixed;
-                    right: 30px;
-                    top: 25px;
-                    font-size: 1.8rem;
-                }
-            }
-
             #list{
                 position: absolute;
                 top: 40px;
-                left: 20%;
+                // left: 20%;
                 @include desktop{
                     position: absolute;
                     top: -10px;
@@ -121,13 +121,12 @@ body{
     }
 
     .main{
-        // position: relative;
+        position: relative;
         margin: 0px;
         background:orangered;
         position: absolute;
         top: 60px;
         max-width: 375px;
-        width: fit-content;
         // animation: showmenu 3s ease forwards;
         // animation required
         .home-section{
@@ -154,10 +153,9 @@ body{
             }
             .home-middle p{
                 text-align: center;
-                line-height: 1.5rem;
-                font-size: 40px;
+                line-height: 1.2rem;
+                font-size: 20px;
                 line-height: 3rem;
-                font-weight: 900;
                 @include desktop{
                     margin-top: 20px;
                 }
@@ -189,7 +187,7 @@ body{
                 margin: auto;
                 // the over flow of the cards that needs js for circulating through them
                 height: 550px;
-                overflow: hidden;
+                overflow-x: hidden;
                 z-index: -1;
                 @include tablets {
                     margin: 0px;
@@ -293,7 +291,7 @@ body{
 
                 @include tablets{
                     display: grid;
-                    grid-template-columns: auto 40%;
+                    grid-template-columns: auto 25%;
                     margin: 5px;
                 }
                 @include desktop{
@@ -607,6 +605,7 @@ body{
                 }
             }
             .main-container{ 
+                width: 100%;
                 .inner-container{
                     display: grid;
                     grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
@@ -616,7 +615,7 @@ body{
                         grid-template-columns: auto auto auto;
                     }
                     .container-one{
-                        margin: 0px 30px 0;
+                        margin: 30px 30px;
                         border-radius: 0 10px 0 10px;
                         
                         .production-filter{
@@ -657,7 +656,7 @@ body{
                         }
                     }
                     .container-two{
-                        margin: 0px 30px 0;
+                        margin: 30px 30px;
                         border-radius: 0 10px 0 10px;
                         .helpsite-side{
                             border-bottom: 1px solid white;
@@ -680,7 +679,7 @@ body{
                     }
                     .container-three{
                         margin:0px 30px 0px;
-                        border-radius: 0 10px 0 10px;
+                        border-radius: 30px 30px;
                         .E-news{
                             .title{
                                 display: flex;
@@ -759,7 +758,7 @@ body{
                     }
                     .container-left{
                         border: 1px solid white;
-                        margin: 0px 30px 0px;
+                        margin: 30px 30px;
                         border-radius:10px 0 10px 0;
                         .title{ 
                             display: flex;
@@ -786,7 +785,7 @@ body{
                     }
                     .container-middle-lower{ 
                         border: 1px solid white;
-                        margin:0px 30px 0px;
+                        margin:30px 30px;
                         border-radius:10px 0 10px 0;
                         .title{
                             display: flex;
@@ -813,7 +812,7 @@ body{
                     }
                     .container-right{
                         border: 1px solid white;
-                        margin:0px 30px 0px;
+                        margin:30px 30px ;
                         border-radius:10px 0 10px 0;
                         .title{
                             display: flex;
@@ -849,16 +848,16 @@ body{
     }
 }
 //animation to show you the humberger menu function, do something on js to toggle the menu
-// main{
-//     animation: showmenu 3s ease forwards;
-// }
-// @keyframes showmenu{
-//     from{
-//         position: absolute;
-//         top: 370px;
-//     }
-//     to{
-//         position: absolute;
-//         top: 60px;
-//     }
-// }
+.main{
+    animation: showmenu 3s ease forwards;
+}
+@keyframes showmenu{
+    from{
+        position: absolute;
+        top: 370px;
+    }
+    to{
+        position: absolute;
+        top: 60px;
+    }
+}
